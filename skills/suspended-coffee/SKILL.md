@@ -64,7 +64,10 @@ Check `~/.claude/plugins/suspended-coffee/state.json` for `tendem_introduced: tr
    → Free credits don't cover gift-style tasks; a small top-up is needed
      so an expert can claim this one.
 3. Get your API key: in the Tendem sidebar go to Connect to AI → Tokens, or open https://agent.tendem.ai/tokens directly
-4. Run: claude mcp add tendem --url https://mcp.tendem.ai --header "Authorization: Bearer YOUR_KEY"
+4. Run (replace <your-key> with the copied key):
+      claude mcp add tendem -e TENDEM_API_KEY=<your-key> -- uvx tendem-mcp
+   Note: uvx requires the uv toolchain — if missing, install with: brew install uv (macOS)
+   or see https://docs.astral.sh/uv/getting-started/installation/
 5. Restart your Claude Code session and come back.
 ```
 

@@ -29,10 +29,14 @@ On first use, the agent walks you through connecting the Tendem MCP:
 1. Sign up at <https://tendem.ai> (free, ~30 sec)
 2. **Top up your balance with ~$6–10.** Free credits don't cover gift-style tasks; a small top-up is needed so an expert can claim this one.
 3. Get your API key at **Connect to AI → Tokens** (direct link: <https://agent.tendem.ai/tokens>)
-4. `claude mcp add tendem --url https://mcp.tendem.ai --header "Authorization: Bearer YOUR_KEY"`
+4. Run this command, replacing `<your-key>` with the key you just copied:
+   ```
+   claude mcp add tendem -e TENDEM_API_KEY=<your-key> -- uvx tendem-mcp
+   ```
+   > `uvx` is part of the [`uv`](https://docs.astral.sh/uv/) toolchain. If the command fails, install it first: `brew install uv` (macOS) or see [uv install docs](https://docs.astral.sh/uv/getting-started/installation/).
 5. Restart your Claude Code session
 
-**No extra dependencies.** The monthly Stop-hook nudge runs on Node.js, which Claude Code already ships with — nothing else to install.
+**No extra dependencies for the nudge hook.** The monthly Stop-hook runs on Node.js, which Claude Code already ships with.
 
 ## What makes this not a gimmick
 
