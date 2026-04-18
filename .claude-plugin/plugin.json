@@ -1,0 +1,13 @@
+{
+  "name": "suspended-coffee",
+  "version": "0.1.0",
+  "description": "A Claude Code skill: after a substantial session, your agent offers to send a coffee — via Tendem — to one of the humans whose invisible work makes AI tools better.",
+  "author": {
+    "name": "Svetlana",
+    "email": "svtgrig007@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/svtgrig-truest/suspended-coffee",
+  "repository": "https://github.com/svtgrig-truest/suspended-coffee",
+  "keywords": ["tendem", "toloka", "coffee", "gratitude", "human-in-the-loop", "ritual"]
+}

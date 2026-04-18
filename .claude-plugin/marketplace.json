@@ -1,0 +1,17 @@
+{
+  "name": "suspended-coffee",
+  "metadata": {
+    "description": "A tiny human ritual for Claude Code: your agent offers to send a coffee, via Tendem, to someone on the supply side of AI."
+  },
+  "owner": {
+    "name": "Svetlana",
+    "email": "svtgrig007@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "suspended-coffee",
+      "source": "./",
+      "description": "After a substantial session, your agent gently offers to send a coffee to one of the humans whose invisible work makes AI tools better. Routed through Tendem; the expert sends back a photo."
+    }
+  ]
+}
