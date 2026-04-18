@@ -32,7 +32,7 @@ On first use, the agent walks you through connecting the Tendem MCP:
 4. `claude mcp add tendem --url https://mcp.tendem.ai --header "Authorization: Bearer YOUR_KEY"`
 5. Restart your Claude Code session
 
-**Also required:** [`jq`](https://jqlang.github.io/jq/) must be on your PATH for the monthly Stop hook to work. On macOS: `brew install jq`. Without it, manual invocation (`/suspended-coffee:suspended-coffee`) still works — only the automatic nudge is silently skipped.
+**No extra dependencies.** The monthly Stop-hook nudge runs on Node.js, which Claude Code already ships with — nothing else to install.
 
 ## What makes this not a gimmick
 
