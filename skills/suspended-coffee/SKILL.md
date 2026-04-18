@@ -63,7 +63,7 @@ Check `~/.claude/plugins/suspended-coffee/state.json` for `tendem_introduced: tr
 2. Top up your balance with the cost of one coffee (~$6-10)
    → Free credits don't cover gift-style tasks; a small top-up is needed
      so an expert can claim this one.
-3. Grab your API key from Settings → API
+3. Get your API key: in the Tendem sidebar go to Connect to AI → Tokens, or open https://agent.tendem.ai/tokens directly
 4. Run: claude mcp add tendem --url https://mcp.tendem.ai --header "Authorization: Bearer YOUR_KEY"
 5. Restart your Claude Code session and come back.
 ```

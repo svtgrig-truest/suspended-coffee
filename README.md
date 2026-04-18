@@ -28,7 +28,7 @@ On first use, the agent walks you through connecting the Tendem MCP:
 
 1. Sign up at <https://tendem.ai> (free, ~30 sec)
 2. **Top up your balance with ~$6–10.** Free credits don't cover gift-style tasks; a small top-up is needed so an expert can claim this one.
-3. Grab your API key from **Settings → API**
+3. Get your API key at **Connect to AI → Tokens** (direct link: <https://agent.tendem.ai/tokens>)
 4. `claude mcp add tendem --url https://mcp.tendem.ai --header "Authorization: Bearer YOUR_KEY"`
 5. Restart your Claude Code session
 
