@@ -60,7 +60,7 @@ If the user accepts, proceed to the main flow.
 
 ## First-time setup (only if MCP is missing)
 
-Check `~/.claude/plugins/suspended-coffee/state.json` for `tendem_introduced: true`. If `mcp__tendem__create_task` is available, skip this section and just update state after the first successful task. If the MCP is NOT available, show the coffee-specific install instructions (note the top-up step):
+Check `~/.claude/plugins/suspended-coffee/state.json`. Run this setup if **either** condition is true: `tendem_introduced` is missing/false, OR `mcp_verified_at` is missing/null. Both must be set to skip setup. Always show these steps on first run — do not try to detect MCP availability, just show them and ask for confirmation (note the top-up step):
 
 ```
 1. Sign up at https://tendem.ai (free, ~30 sec)
@@ -75,7 +75,11 @@ Check `~/.claude/plugins/suspended-coffee/state.json` for `tendem_introduced: tr
 5. Restart your Claude Code session and come back.
 ```
 
-After MCP is verified, set `tendem_introduced: true` and `mcp_verified_at: <ISO>` in state.json.
+Then ask: "Do you already have the Tendem MCP set up, or do you need a moment to complete the steps above?"
+- If already set up → continue to the main flow
+- If not set up → stop here; user will restart Claude Code and re-invoke the skill
+
+Once the user confirms MCP is ready, write `~/.claude/plugins/suspended-coffee/state.json` with `tendem_introduced: true` and `mcp_verified_at: <ISO>`. Create the file if it does not exist.
 
 ## Main flow
 
@@ -98,7 +102,21 @@ Example rendering (generate your own variant, don't copy):
 
 ### Step 2 — create the task
 
-Call `mcp__tendem__create_task` with the brief and budget. Poll `mcp__tendem__get_task` every ~30-60 seconds until status becomes `AWAITING_APPROVAL`. Keep this quiet — do NOT narrate each `PROCESSING` check to the user. A single "scoping the task…" line is plenty; surface again only when there's a price to approve.
+Call `mcp__tendem__create_task` with the brief and budget.
+
+**If the tool is unavailable or returns a tool-not-found error:** do NOT improvise alternatives. Show the setup steps and stop:
+
+```
+It looks like the Tendem MCP isn't connected yet. One-time setup:
+1. Sign up at https://tendem.ai (free, ~30 sec)
+2. Top up your balance (~$6-10) — free credits don't cover gift tasks
+3. Get your API key: https://agent.tendem.ai/tokens
+4. Run: claude mcp add tendem -e TENDEM_API_KEY=<your-key> -- uvx tendem-mcp
+   (uvx requires uv: brew install uv on macOS)
+5. Restart Claude Code and re-run this command
+```
+
+Poll `mcp__tendem__get_task` every ~30-60 seconds until status becomes `AWAITING_APPROVAL`. Keep this quiet — do NOT narrate each `PROCESSING` check to the user. A single "scoping the task…" line is plenty; surface again only when there's a price to approve.
 
 ### Step 3 — approval handoff
 
